@@ -28,7 +28,5 @@ public class GetRTPCSong : MonoBehaviour
     {
         int type = 1;
         AkSoundEngine.GetRTPCValue("meter", obj, playingID, out meterValue, ref type);
-        
-        Debug.Log(meterValue);
     }
 }
