@@ -24,20 +24,6 @@ public class SubsHeightAdjust : MonoBehaviour
      * remaps values to useable range, and updates the scale (height) of the object
      * in the Y axis.
      */
-    /*
-    void Update()
-    {
-        float meterVal = SubsMeterRTPC.meterValue;
-
-        if (meterVal <= -80.0f)
-            meterVal = -80.0f;
-
-        float scaleMeterVal = mapValues.remapValues(meterVal, -80.0f, 10.0f, 0.12f, scaleVal);
-        transform.localScale = new Vector3(scaleX, scaleMeterVal, scaleZ);
-        cylinderHeight = scaleMeterVal;
-    }
-    */
-
     private void FixedUpdate()
     {
         float meterVal = SubsMeterRTPC.meterValue;
