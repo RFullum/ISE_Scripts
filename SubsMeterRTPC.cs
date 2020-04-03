@@ -28,6 +28,5 @@ public class SubsMeterRTPC : MonoBehaviour
     {
         int type = 1;
         AkSoundEngine.GetRTPCValue("SubsRTPC", obj, playingID, out meterValue, ref type);
-        //Debug.Log(meterValue);
     }
 }
