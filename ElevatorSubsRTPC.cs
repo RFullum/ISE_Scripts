@@ -21,7 +21,6 @@ public class ElevatorSubsRTPC : MonoBehaviour
     private void Start()
     {
         meterValue = -90.0f;
-        //Debug.Log(meterValue);
     }
     
 
