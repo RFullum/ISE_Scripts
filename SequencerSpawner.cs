@@ -15,14 +15,6 @@ public class SequencerSpawner : MonoBehaviour
         
     }
 
-    /*
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    */
-
     public void SpawnSequencer()
     {
         float spawnX = 0.0f;

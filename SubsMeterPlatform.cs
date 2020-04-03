@@ -18,7 +18,7 @@ public class SubsMeterPlatform : MonoBehaviour
 
             // player.transform.position = new Vector3(player.transform.position.x, transform.localScale.y + 0.8f, player.transform.position.z);
             // player.transform.position = new Vector3(playerX, cylinderY, playerZ);
-            player.transform.position = new Vector3(playerX, cylHeight.cylinderHeight, playerZ);
+            player.transform.position = new Vector3(playerX, cylHeight.cylinderHeight + 1.0f, playerZ);
         }
     }
 
