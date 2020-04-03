@@ -23,19 +23,6 @@ public class ElevatorSubsHeight : MonoBehaviour
      * remaps values to useable range, and updates the position of the object
      * in the Y axis.
      */
-    /*
-    void Update()
-    {
-        float meterVal = ElevatorSubsRTPC.meterValue;
-
-        if (meterVal <= -80.0f)
-            meterVal = -80.0f;
-
-        float scaleMeterVal = mapValues.remapValues(meterVal, -80.0f, 10.0f, 0.12f, scaleVal);
-        transform.position = new Vector3(posX, scaleMeterVal, posZ);
-    }
-    */
-
     private void FixedUpdate()
     {
         float meterVal = ElevatorSubsRTPC.meterValue;
