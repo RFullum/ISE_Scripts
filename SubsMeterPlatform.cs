@@ -7,7 +7,7 @@ public class SubsMeterPlatform : MonoBehaviour
     public GameObject player;
     SubsHeightAdjust cylHeight = new SubsHeightAdjust();
 
-
+    
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject == player)
@@ -21,6 +21,7 @@ public class SubsMeterPlatform : MonoBehaviour
             player.transform.position = new Vector3(playerX, cylHeight.cylinderHeight + 1.0f, playerZ);
         }
     }
+    
 
     /*
     private void OnTriggerEnter(Collider other)

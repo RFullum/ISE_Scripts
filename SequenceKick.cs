@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 /**
  * Creates a set of 16 sequencer Cubes. Cubes can be activated or deactivated, and
  * determine the note triggered by that Cube in the sequence.
@@ -10,10 +11,12 @@ using UnityEngine;
  * and an array of strings that stores the name of the state.
  * Used as a reference for the other scripts that need this data.
  */
-public class Sequence808 : MonoBehaviour
+public class SequenceKick : MonoBehaviour
 {
+
     // Tag allows you to activate and deactivate sequencer blocks
     [SerializeField] private string beatTag = "beatToggle";
+
 
     // 1 bar = 16th notes, from BPM
     private int sequenceLength = 16;
@@ -22,10 +25,11 @@ public class Sequence808 : MonoBehaviour
     public GameObject sequenceCube;                     // Prefab cube (Spawn non-prefab cubes somehow?)
     GameObject[] sequenceBlocks = new GameObject[16];   // Array for sequenceCube instances
 
-    // Declare Note Values
-    private string[] notes = new string[13] { "C0", "CshDb0", "D0", "DshEb0", "E0", "F0", "FshGb0", "G0", "GshAb0", "A1", "AshBb1", "B1", "C1" };
-    public static string[] patternNote = new string[16];
-    private int notePicker = 0;
+
+    // Declare Kick types
+    private string[] kickStates = new string[5] { "Kick1_C", "Kick1_F", "Kick2", "Kick3", "Kick4" };
+    public static string[] patternKick = new string[16];
+    private int kickPicker = 0;
 
     /**
      * Used to name block instances and then convert cube name to int
@@ -45,19 +49,18 @@ public class Sequence808 : MonoBehaviour
         for (int i = 0; i < sequenceLength; i++)
         {
             pattern[i] = false;
-  
+
             GameObject sequenceBlockInstance = Instantiate(sequenceCube);
             sequenceBlockInstance.transform.position = this.transform.position;
             sequenceBlockInstance.transform.parent = this.transform;
             sequenceBlockInstance.name = i + nameSlice;
-            sequenceBlockInstance.transform.position = new Vector3(20.0f + i, 0.5f, 10.0f + (i * 0.1f));
+            sequenceBlockInstance.transform.position = new Vector3(20.0f + i, 0.5f, 0.0f + (i * 0.1f));
             sequenceBlockInstance.tag = beatTag;
 
             /**
-             * Initializes all notes to "C0" so there's a valid state name.
+             * Initializes all states to "Kick1_C" so there's a valid state name.
              */
-            patternNote[i] = "C0";
-            
+            patternKick[i] = "Kick1_C";
 
             /**
              * Places child cubes into GameObject array sequenceBlocks
@@ -66,11 +69,10 @@ public class Sequence808 : MonoBehaviour
         }
     }
 
-
     void Update()
     {
         // Create a ray at center of mouse position (center screen)
-        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        var ray2 = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         /**
          * If the object is tagged as a beatTag, pressing "b" will toggle
@@ -79,7 +81,7 @@ public class Sequence808 : MonoBehaviour
          * False: deactivates the pattern position 
          * Pressing "n" will select the note, 13 semitones from C0 to C1
          */
-        if (Physics.Raycast(ray, out var hit))
+        if (Physics.Raycast(ray2, out var hit))
         {
             if (hit.collider.gameObject.tag == beatTag)
             {
@@ -99,28 +101,28 @@ public class Sequence808 : MonoBehaviour
                     pattern[patternIndex] = !pattern[patternIndex];
                 }
 
-                /**
-                 * Scroll through notes C0 through C1:
-                 * When "n" is pressed, increment notePicker, wrap to 13
+            }
+
+            /**
+                 * Scroll through kickStates:
+                 * When "n" is pressed, increment notePicker, wrap to 5 kicks
                  * Set selectedNote to Note State string at index notePicker
                  * Strip sequencerBlock number from block instance name
                  * store the selectedNote to the patternNote using block number as index
                  */
-                if (Input.GetKeyDown(KeyCode.N))
-                {
-                    notePicker++;
-                    notePicker %= 13;
-                    string selectedNote = notes[notePicker];
+            if (Input.GetKeyDown(KeyCode.N))
+            {
+                kickPicker++;
+                kickPicker %= 13;
+                string selectedNote = kickStates[kickPicker];
 
-                    string blockName = hit.collider.gameObject.name;
-                    string blockIndex = blockName.Replace(nameSlice, "");
-                    int patternIndex = System.Convert.ToInt32(blockIndex);
+                string blockName = hit.collider.gameObject.name;
+                string blockIndex = blockName.Replace(nameSlice, "");
+                int patternIndex = System.Convert.ToInt32(blockIndex);
 
-                    patternNote[patternIndex] = selectedNote;
+                patternKick[patternIndex] = selectedNote;
 
-                }
             }
         }
     }
-
 }
