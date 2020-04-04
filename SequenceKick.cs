@@ -15,7 +15,7 @@ public class SequenceKick : MonoBehaviour
 {
 
     // Tag allows you to activate and deactivate sequencer blocks
-    [SerializeField] private string beatTag = "beatToggle";
+    [SerializeField] private string beatTag = "kickToggle";
 
 
     // 1 bar = 16th notes, from BPM
@@ -35,7 +35,7 @@ public class SequenceKick : MonoBehaviour
      * Used to name block instances and then convert cube name to int
      * by slicing off "_SequenceCube" from name
      */
-    private string nameSlice = "_SequenceCube";
+    private string nameSlice = "_SequenceKickCube";
 
 
     void Start()
@@ -113,7 +113,7 @@ public class SequenceKick : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.N))
             {
                 kickPicker++;
-                kickPicker %= 13;
+                kickPicker %= 5;
                 string selectedNote = kickStates[kickPicker];
 
                 string blockName = hit.collider.gameObject.name;

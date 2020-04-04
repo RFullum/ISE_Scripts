@@ -12,7 +12,7 @@ public class SequencerBlockColorKick : MonoBehaviour
     Color activeColor = new Color(1.0f, 0.92f, 0.016f, 1.0f);
 
     // Used to convert cube name to int by slicing off "_SequenceCube" from name
-    private string nameSlice = "_SequenceCube";
+    private string nameSlice = "_SequenceKickCube";
 
 
     void Start()
@@ -21,7 +21,7 @@ public class SequencerBlockColorKick : MonoBehaviour
         var colorRender = gameObject.GetComponent<Renderer>();
         colorRender.material.SetColor("_Color", defaultColor);
     }
-    /*
+    
     void Update()
     {
         // Derives patternIndex by slicing off leading name digits and converting to int
@@ -35,7 +35,7 @@ public class SequencerBlockColorKick : MonoBehaviour
          * When cube is inactive (false) - defaultColor
          * When cube is active (true) - activeColor
          */
-         /*
+         
         if (SequenceKick.pattern[patternIndex] == false)
         {
             var colorRender = gameObject.GetComponent<Renderer>();
@@ -47,5 +47,5 @@ public class SequencerBlockColorKick : MonoBehaviour
             colorRender.material.SetColor("_Color", activeColor);
         }
     }
-    */
+    
 }
