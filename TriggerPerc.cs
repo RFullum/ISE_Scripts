@@ -2,22 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 /**
- * When Kick Sphere collides with Kick Cube, gets the Kick State from NoteKick script,
- * sets the Wwise Kick State, plays Kick event.
+ * When Snare Sphere collides with Snare Cube, gets the Snare State from NoteSnare script,
+ * sets the Wwise Snare State, plays Snare event.
  */
-public class TriggerKick : MonoBehaviour
+public class TriggerPerc : MonoBehaviour
 {
     [SerializeField] string wwiseEvent;
 
-    
+
     void Start()
     {
         // Initialize State so it doesn't default to None State
-        AkSoundEngine.SetState("Kick", "Kick1_C");
+        AkSoundEngine.SetState("Perc", "Perc1");
     }
-
 
     /**
      * When Sphere collides with Cube, retrieve Note State associated with
@@ -27,10 +25,10 @@ public class TriggerKick : MonoBehaviour
     {
         GameObject currentBall = collision.gameObject;
 
-        var ballScript = currentBall.GetComponent<NoteKick>();
+        var ballScript = currentBall.GetComponent<NotePerc>();
         string ballNoteState = ballScript.getNote();
 
-        AkSoundEngine.SetState("Kick", ballNoteState);
+        AkSoundEngine.SetState("Perc", ballNoteState);
         AkSoundEngine.PostEvent(wwiseEvent, gameObject);
     }
 }

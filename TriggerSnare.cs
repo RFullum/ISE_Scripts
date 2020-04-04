@@ -9,15 +9,29 @@ using UnityEngine;
  */
 public class TriggerSnare : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    [SerializeField] string wwiseEvent;
+
+    
     void Start()
     {
-        
+        // Initialize State so it doesn't default to None State
+        AkSoundEngine.SetState("Snares", "Snare1");
+
     }
 
-    // Update is called once per frame
-    void Update()
+    /**
+     * When Sphere collides with Cube, retrieve Note State associated with
+     * that Sphere, set the State using it, and then trigger the sound.
+     */
+    private void OnCollisionEnter(Collision collision)
     {
-        
+        GameObject currentBall = collision.gameObject;
+
+        var ballScript = currentBall.GetComponent<NoteSnare>();
+        string ballNoteState = ballScript.getNote();
+
+        AkSoundEngine.SetState("Snares", ballNoteState);
+        AkSoundEngine.PostEvent(wwiseEvent, gameObject);
     }
 }
