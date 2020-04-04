@@ -20,7 +20,7 @@ public class dropper808 : MonoBehaviour
         {
             int beatCount = BPM.sixteenthCountFull % 16;
 
-            if (Sequence808.pattern[beatCount] == true)
+            if (SequenceKick.pattern[beatCount] == true)
             {
                 spawnSequencer();
             }

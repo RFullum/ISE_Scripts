@@ -72,7 +72,7 @@ public class SequenceKick : MonoBehaviour
     void Update()
     {
         // Create a ray at center of mouse position (center screen)
-        var ray2 = Camera.main.ScreenPointToRay(Input.mousePosition);
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         /**
          * If the object is tagged as a beatTag, pressing "b" will toggle
@@ -81,7 +81,7 @@ public class SequenceKick : MonoBehaviour
          * False: deactivates the pattern position 
          * Pressing "n" will select the note, 13 semitones from C0 to C1
          */
-        if (Physics.Raycast(ray2, out var hit))
+        if (Physics.Raycast(ray, out var hit))
         {
             if (hit.collider.gameObject.tag == beatTag)
             {
