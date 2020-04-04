@@ -5,14 +5,14 @@ using UnityEngine;
 /**
  * Changes color of sequencer block depending on if it's active or inactive
  */
-public class SequencerBlockColorSnare : MonoBehaviour
+public class SequencerBlockColorPerc : MonoBehaviour
 {
     // Declare color values
     Color defaultColor = new Color(0.5f, 0.5f, 0.5f, 1.0f);
     Color activeColor = new Color(1.0f, 0.92f, 0.016f, 1.0f);
 
     // Used to convert cube name to int by slicing off "_SequenceCube" from name
-    private string nameSlice = "_SequenceSnareCube";
+    private string nameSlice = "_SequencePercCube";
 
 
 
@@ -38,12 +38,12 @@ public class SequencerBlockColorSnare : MonoBehaviour
          * When cube is active (true) - activeColor
          */
 
-        if (SequenceSnare.pattern[patternIndex] == false)
+        if (SequencePerc.pattern[patternIndex] == false)
         {
             var colorRender = gameObject.GetComponent<Renderer>();
             colorRender.material.SetColor("_Color", defaultColor);
         }
-        else if (SequenceSnare.pattern[patternIndex] == true)
+        else if (SequencePerc.pattern[patternIndex] == true)
         {
             var colorRender = gameObject.GetComponent<Renderer>();
             colorRender.material.SetColor("_Color", activeColor);

@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 /**
  * spawns sphere to drop
  */
-public class DropperSnare : MonoBehaviour
+public class DropperPerc : MonoBehaviour
 {
-
     // Object to be spawned
     public GameObject spawnee;
-
 
 
     void Update()
@@ -22,7 +21,7 @@ public class DropperSnare : MonoBehaviour
         {
             int beatCount = BPM.sixteenthCountFull % 16;
 
-            if (SequenceSnare.pattern[beatCount] == true)
+            if (SequencePerc.pattern[beatCount] == true)
             {
                 spawnSequencer();
             }
@@ -37,7 +36,7 @@ public class DropperSnare : MonoBehaviour
     {
         float spawnX = 10.0f;
         float spawnY = 10.0f;
-        float spawnZ = -10.0f;
+        float spawnZ = -20.0f;
 
         Instantiate(spawnee, new Vector3(spawnX, spawnY, spawnZ), Quaternion.identity);
     }

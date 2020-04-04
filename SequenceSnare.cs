@@ -67,7 +67,6 @@ public class SequenceSnare : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         // Create a ray at center of mouse position (center screen)
