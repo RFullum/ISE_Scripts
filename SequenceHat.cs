@@ -128,6 +128,10 @@ public class SequenceHat : MonoBehaviour
                 patternHat[patternIndex] = selectedNote;
             }
 
+
+            /**
+             * Toggles between open hat and closed hat switches
+             */
             if (Input.GetKeyDown(KeyCode.H))
             {
                 openHat = !openHat;

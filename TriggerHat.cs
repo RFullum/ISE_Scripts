@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
- * When Snare Sphere collides with Snare Cube, gets the Snare State from NoteSnare script,
- * sets the Wwise Snare State, plays Snare event.
+ * When Snare Sphere collides with Hat Cube, gets the Hat State from NoteHat script,
+ * sets the Wwise Hat State, plays Hat event.
  */
 public class TriggerHat : MonoBehaviour
 {

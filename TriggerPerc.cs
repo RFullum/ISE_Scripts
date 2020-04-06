@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
- * When Snare Sphere collides with Snare Cube, gets the Snare State from NoteSnare script,
- * sets the Wwise Snare State, plays Snare event.
+ * When Snare Sphere collides with Perc Cube, gets the Perc State from NotePerc script,
+ * sets the Wwise Perc State, plays Snare event.
  */
 public class TriggerPerc : MonoBehaviour
 {

@@ -4,7 +4,8 @@ using UnityEngine;
 
 
 /**
- * Changes color of sequencer block depending on if it's active or inactive
+ * Changes color of sequencer block depending on if it's active or inactive,
+ * open hat or closed hat
  */
 public class SequencerBlockColorHat : MonoBehaviour
 {
@@ -36,7 +37,9 @@ public class SequencerBlockColorHat : MonoBehaviour
          * Toggles between defaultColor and activeColor:
          * Gets bool stored in array from SequenceSnare script
          * When cube is inactive (false) - defaultColor
-         * When cube is active (true) - activeColor
+         * When cube is active (true) - activeColor or openColor, depending on
+         * the open/close switch
+         * 
          */
 
         if (SequenceHat.pattern[patternIndex] == false)
