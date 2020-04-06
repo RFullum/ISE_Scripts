@@ -14,7 +14,7 @@ public class TriggerPerc : MonoBehaviour
     void Start()
     {
         // Initialize State so it doesn't default to None State
-        AkSoundEngine.SetState("Perc", "Perc1");
+        AkSoundEngine.SetSwitch("Perc", "Perc1", gameObject);
     }
 
     /**
@@ -28,7 +28,7 @@ public class TriggerPerc : MonoBehaviour
         var ballScript = currentBall.GetComponent<NotePerc>();
         string ballNoteState = ballScript.getNote();
 
-        AkSoundEngine.SetState("Perc", ballNoteState);
+        AkSoundEngine.SetSwitch("Perc", ballNoteState, gameObject);
         AkSoundEngine.PostEvent(wwiseEvent, gameObject);
     }
 }
