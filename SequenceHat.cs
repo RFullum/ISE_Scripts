@@ -10,10 +10,10 @@ using UnityEngine;
  * and an array of strings that stores the name of the state.
  * Used as a reference for the other scripts that need this data.
  */
-public class SequencePerc : MonoBehaviour
+public class SequenceHat : MonoBehaviour
 {
     // Tag allows you to activate and deactivate sequencer blocks
-    [SerializeField] private string beatTag = "percToggle";
+    [SerializeField] private string beatTag = "hatToggle";
 
     // 1 bar = 16th notes, from BPM
     private int sequenceLength = 16;
@@ -22,16 +22,21 @@ public class SequencePerc : MonoBehaviour
     public GameObject sequenceCube;                     // Prefab cube (Spawn non-prefab cubes somehow?)
     GameObject[] sequenceBlocks = new GameObject[16];   // Array for sequenceCube instances
 
-    // Declare Snare types
-    private string[] percStates = new string[4] { "Perc1", "Perc2", "Perc3", "Perc4" };
-    public static string[] patternPerc = new string[16];
-    private int percPicker = 0;
+    // Declare Hat types
+    private string[] hatStates = new string[4] { "Hat1", "Hat2", "Hat3", "Hat4" };
+    public static string[] patternHat = new string[16];
+    private int hatPicker = 0;
+
+    // Declare Open/Closed
+    private bool openHat = false;
+    public static string[] patternOpenClose = new string[16];
 
     /**
      * Used to name block instances and then convert cube name to int
      * by slicing off "_SequenceCube" from name
      */
-    private string nameSlice = "_SequencePercCube";
+    private string nameSlice = "_SequenceHatCube";
+
 
 
     void Start()
@@ -50,13 +55,14 @@ public class SequencePerc : MonoBehaviour
             sequenceBlockInstance.transform.position = this.transform.position;
             sequenceBlockInstance.transform.parent = this.transform;
             sequenceBlockInstance.name = i + nameSlice;
-            sequenceBlockInstance.transform.position = new Vector3(20.0f + i, 0.5f, -20.0f + (i * 0.1f));
+            sequenceBlockInstance.transform.position = new Vector3(20.0f + i, 0.5f, -30.0f + (i * 0.1f));
             sequenceBlockInstance.tag = beatTag;
 
             /**
-             * Initializes all states to "Perc1" so there's a valid state name.
+             * Initializes all states to "Hat1" and "Closed" so there's a valid state name.
              */
-            patternPerc[i] = "Perc1";
+            patternHat[i] = "Hat1";
+            patternOpenClose[i] = "Closed";
 
             /**
              * Places child cubes into GameObject array sequenceBlocks
@@ -65,6 +71,7 @@ public class SequencePerc : MonoBehaviour
         }
 
     }
+
 
 
     void Update()
@@ -102,7 +109,7 @@ public class SequencePerc : MonoBehaviour
             }
 
             /**
-                 * Scroll through kickStates:
+                 * Scroll through hatStates:
                  * When "n" is pressed, increment notePicker, wrap to 5 kicks
                  * Set selectedNote to Note State string at index notePicker
                  * Strip sequencerBlock number from block instance name
@@ -110,15 +117,33 @@ public class SequencePerc : MonoBehaviour
                  */
             if (Input.GetKeyDown(KeyCode.N))
             {
-                percPicker++;
-                percPicker %= 4;
-                string selectedNote = percStates[percPicker];
+                hatPicker++;
+                hatPicker %= 4;
+                string selectedNote = hatStates[hatPicker];
 
                 string blockName = hit.collider.gameObject.name;
                 string blockIndex = blockName.Replace(nameSlice, "");
                 int patternIndex = System.Convert.ToInt32(blockIndex);
 
-                patternPerc[patternIndex] = selectedNote;
+                patternHat[patternIndex] = selectedNote;
+            }
+
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                openHat = !openHat;
+
+                string blockName = hit.collider.gameObject.name;
+                string blockIndex = blockName.Replace(nameSlice, "");
+                int patternIndex = System.Convert.ToInt32(blockIndex);
+
+                if (openHat == false)
+                {
+                    patternOpenClose[patternIndex] = "Closed";
+                }
+                else if (openHat == true)
+                {
+                    patternOpenClose[patternIndex] = "Open";
+                }
 
             }
         }
