@@ -13,7 +13,8 @@ public class TriggerSound : MonoBehaviour
     private void Start()
     {
         // Initialize State so it doesn't default to None State
-        AkSoundEngine.SetState("Note", "C0");
+        //AkSoundEngine.SetState("Note", "C0");
+        AkSoundEngine.SetSwitch("Notes808", "C0", gameObject);
     }
 
     /**
@@ -27,7 +28,8 @@ public class TriggerSound : MonoBehaviour
         var ballScript = currentBall.GetComponent<Note808>();
         string ballNoteState = ballScript.getNote();
 
-        AkSoundEngine.SetState("Note", ballNoteState);
+        //AkSoundEngine.SetState("Note", ballNoteState);
+        AkSoundEngine.SetSwitch("Notes808", ballNoteState, gameObject);
         AkSoundEngine.PostEvent(wwiseEvent, gameObject);
     }
 }
