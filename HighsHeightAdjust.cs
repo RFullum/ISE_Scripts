@@ -6,7 +6,7 @@ using UnityEngine;
 /**
  * Adjust object height using values from SubsMeterRTPC script
  */
-public class LowsHeightAdjust : MonoBehaviour
+public class HighsHeightAdjust : MonoBehaviour
 {
     // Make height available publicly
     public float cylinderHeight;
@@ -31,7 +31,7 @@ public class LowsHeightAdjust : MonoBehaviour
      */
     private void FixedUpdate()
     {
-        float meterVal = LowsMeterRTPC.meterValue;
+        float meterVal = HighsMeterRTPC.meterValue;
 
         if (meterVal <= -80.0f)
             meterVal = -80.0f;
