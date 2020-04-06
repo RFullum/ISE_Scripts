@@ -15,7 +15,7 @@ public class TriggerKick : MonoBehaviour
     void Start()
     {
         // Initialize State so it doesn't default to None State
-        AkSoundEngine.SetState("Kick", "Kick1_C");
+        AkSoundEngine.SetSwitch("Kick", "Kick1_C", gameObject);
     }
 
 
@@ -30,7 +30,7 @@ public class TriggerKick : MonoBehaviour
         var ballScript = currentBall.GetComponent<NoteKick>();
         string ballNoteState = ballScript.getNote();
 
-        AkSoundEngine.SetState("Kick", ballNoteState);
+        AkSoundEngine.SetSwitch("Kick", ballNoteState,gameObject);
         AkSoundEngine.PostEvent(wwiseEvent, gameObject);
     }
 }
