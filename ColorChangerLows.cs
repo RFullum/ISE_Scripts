@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 /**
  * Changes color of object based on Wwise Meter values
  */
-public class ColorChanger : MonoBehaviour
+public class ColorChangerLows : MonoBehaviour
 {
     // Instance of Color object
     Color newColor;
@@ -25,16 +26,18 @@ public class ColorChanger : MonoBehaviour
     void Update()
     {
         // Gets Wwise Master Bus level real-time
-        float meterVal = SubsMeterRTPC.meterValue;
+        float meterVal = LowsMeterRTPC.meterValue;
 
         /**
          * Takes meterVal from Wwise and remaps values between 1.0f and 0.0f
          * uses scaledMeterVal to update the R and G arguments for the RGBA color
          * Sets material color to new color values
          */
-        float scaleMeterVal = mapValues.remapValues(meterVal, -80.0f, 10.0f, 1.0f, 0.0f);
+        float scaleRedVal = mapValues.remapValues(meterVal, -80.0f, 10.0f, 1.0f, 0.235294f);
+        float scaleGreenVal = mapValues.remapValues(meterVal, -80.0f, 10.0f, 1.0f, 1.0f);
+        float scaleBlueVal = mapValues.remapValues(meterVal, -80.0f, 10.0f, 1.0f, 0.0f);
         var colorRender = gameObject.GetComponent<Renderer>();
-        newColor = new Color(scaleMeterVal, scaleMeterVal, 0.5f, 1.0f);
+        newColor = new Color(scaleRedVal, scaleGreenVal, scaleBlueVal, 1.0f);
         colorRender.material.SetColor("_Color", newColor);
 
     }
