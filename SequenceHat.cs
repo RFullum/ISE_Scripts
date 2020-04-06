@@ -28,7 +28,7 @@ public class SequenceHat : MonoBehaviour
     private int hatPicker = 0;
 
     // Declare Open/Closed
-    private bool openHat = false;
+    public static bool[] openHatSettings = new bool[16];
     public static string[] patternOpenClose = new string[16];
 
     /**
@@ -63,6 +63,7 @@ public class SequenceHat : MonoBehaviour
              */
             patternHat[i] = "Hat1";
             patternOpenClose[i] = "Closed";
+            openHatSettings[i] = false;
 
             /**
              * Places child cubes into GameObject array sequenceBlocks
@@ -134,17 +135,17 @@ public class SequenceHat : MonoBehaviour
              */
             if (Input.GetKeyDown(KeyCode.H))
             {
-                openHat = !openHat;
-
                 string blockName = hit.collider.gameObject.name;
                 string blockIndex = blockName.Replace(nameSlice, "");
                 int patternIndex = System.Convert.ToInt32(blockIndex);
 
-                if (openHat == false)
+                openHatSettings[patternIndex] = !openHatSettings[patternIndex];
+
+                if (openHatSettings[patternIndex] == false)
                 {
                     patternOpenClose[patternIndex] = "Closed";
                 }
-                else if (openHat == true)
+                else if (openHatSettings[patternIndex] == true)
                 {
                     patternOpenClose[patternIndex] = "Open";
                 }
