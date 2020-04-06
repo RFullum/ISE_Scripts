@@ -16,7 +16,7 @@ public class TriggerSnare : MonoBehaviour
     void Start()
     {
         // Initialize State so it doesn't default to None State
-        AkSoundEngine.SetState("Snares", "Snare1");
+        AkSoundEngine.SetSwitch("Snares", "Snare1", gameObject);
 
     }
 
@@ -31,7 +31,7 @@ public class TriggerSnare : MonoBehaviour
         var ballScript = currentBall.GetComponent<NoteSnare>();
         string ballNoteState = ballScript.getNote();
 
-        AkSoundEngine.SetState("Snares", ballNoteState);
+        AkSoundEngine.SetSwitch("Snares", ballNoteState, gameObject);
         AkSoundEngine.PostEvent(wwiseEvent, gameObject);
     }
 }
