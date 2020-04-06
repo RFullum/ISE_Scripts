@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
- * When 808 Sphere collides with 808 Cube, gets the Note State from Note808 script,
- * sets the Wwise Note State, plays 808 event.
+ * When 808 Sphere collides with 808 Cube, gets the Note switch from Note808 script,
+ * sets the Wwise Note switch, plays 808 event.
  */
 public class TriggerSound : MonoBehaviour
 {
@@ -13,7 +13,6 @@ public class TriggerSound : MonoBehaviour
     private void Start()
     {
         // Initialize State so it doesn't default to None State
-        //AkSoundEngine.SetState("Note", "C0");
         AkSoundEngine.SetSwitch("Notes808", "C0", gameObject);
     }
 
@@ -28,7 +27,6 @@ public class TriggerSound : MonoBehaviour
         var ballScript = currentBall.GetComponent<Note808>();
         string ballNoteState = ballScript.getNote();
 
-        //AkSoundEngine.SetState("Note", ballNoteState);
         AkSoundEngine.SetSwitch("Notes808", ballNoteState, gameObject);
         AkSoundEngine.PostEvent(wwiseEvent, gameObject);
     }
