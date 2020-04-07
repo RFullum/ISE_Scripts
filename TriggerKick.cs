@@ -30,7 +30,7 @@ public class TriggerKick : MonoBehaviour
         var ballScript = currentBall.GetComponent<NoteKick>();
         string ballNoteState = ballScript.getNote();
 
-        AkSoundEngine.SetSwitch("Kick", ballNoteState,gameObject);
+        AkSoundEngine.SetSwitch("Kick", ballNoteState, gameObject);
         AkSoundEngine.PostEvent(wwiseEvent, gameObject);
     }
 }
