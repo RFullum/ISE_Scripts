@@ -6,6 +6,7 @@ public class BassBlockTrigger : MonoBehaviour
 {
     private int cubeNote;
     private int cubeSequencerPos;
+    private string ballTag = "bassSeq";
 
 
     void Start()
@@ -27,6 +28,22 @@ public class BassBlockTrigger : MonoBehaviour
         string currentCubeNamePos = gameObject.name;
         string cubeSeqPos = currentCubeNamePos.Substring(currentCubeNamePos.Length - 2).Replace("_", "");
         cubeSequencerPos = System.Convert.ToInt32(cubeSeqPos);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == ballTag)
+        {
+            if(BPM.sixteenthBeatFull)
+            {
+                int beatCount = BPM.sixteenthCountFull % 16;
+
+                if (beatCount == cubeSequencerPos)
+                {
+                    Debug.Log("POTATO");
+                }
+            }
+        }
     }
 
 
