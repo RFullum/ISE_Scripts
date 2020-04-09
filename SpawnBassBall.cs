@@ -11,9 +11,13 @@ public class SpawnBassBall : MonoBehaviour
     [SerializeField] string bassTag = "bassSeq";
     [SerializeField] GameObject spawnee;
 
+    /**
+     * Create a ray at center of mouse position (center screen)
+     * When raycast is over bassCylinder, and you press B,
+     * it spawns a new bassBall to put in bass sequencer grid
+     */
     void Update()
     {
-        // Create a ray at center of mouse position (center screen)
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out var hit))
