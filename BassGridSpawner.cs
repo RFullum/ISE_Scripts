@@ -22,6 +22,7 @@ public class BassGridSpawner : MonoBehaviour
     private float spawnXbassTrig = 100.5f;
     private float spawnYbassTrig = 0.125f;
     private float spawnZbassTrig = 0.5f;
+    private string cubeName = "_bassTriggerCube_";
 
     // Grid grid lines in each direction
     private int numGridLines26 = 17;
@@ -56,12 +57,13 @@ public class BassGridSpawner : MonoBehaviour
 
     private void spawnGridBassTrig()
     {
-        for (int i = 0; i < numGridLines17; i++)
+        for (int i = 0; i < numGridLines17 - 1; i++)
         {
-            for (int j=0; j<numGridLines26; j++)
+            for (int j=0; j<numGridLines26 - 1; j++)
             {
                 var spawnPos = new Vector3(spawnXbassTrig + j, spawnYbassTrig, spawnZbassTrig + i);
-                Instantiate(spawneeTriggerCube, spawnPos, Quaternion.identity);
+                GameObject bassGridBlock = Instantiate(spawneeTriggerCube, spawnPos, Quaternion.identity);
+                bassGridBlock.name = i + cubeName + j;
             }
         }
     }
