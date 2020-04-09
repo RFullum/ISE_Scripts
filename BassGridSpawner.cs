@@ -6,6 +6,7 @@ public class BassGridSpawner : MonoBehaviour
 {
     [SerializeField] GameObject spawnee26;
     [SerializeField] GameObject spawnee17;
+    [SerializeField] GameObject spawneeTriggerCube;
 
     // Prefab BassGrid26
     private float spawnX26 = 100.0f;
@@ -17,6 +18,11 @@ public class BassGridSpawner : MonoBehaviour
     private float spawnY17 = 0.125f;
     private float spawnZ17 = 0.0f;
 
+    // Prefab BassTriggerCube
+    private float spawnXbassTrig = 100.5f;
+    private float spawnYbassTrig = 0.125f;
+    private float spawnZbassTrig = 0.5f;
+
     // Grid grid lines in each direction
     private int numGridLines26 = 17;
     private int numGridLines17 = 26;
@@ -26,6 +32,7 @@ public class BassGridSpawner : MonoBehaviour
     {
         spawnGrid26();
         spawnGrid17();
+        spawnGridBassTrig();
     }
 
 
@@ -47,4 +54,15 @@ public class BassGridSpawner : MonoBehaviour
         }
     }
 
+    private void spawnGridBassTrig()
+    {
+        for (int i = 0; i < numGridLines17; i++)
+        {
+            for (int j=0; j<numGridLines26; j++)
+            {
+                var spawnPos = new Vector3(spawnXbassTrig + j, spawnYbassTrig, spawnZbassTrig + i);
+                Instantiate(spawneeTriggerCube, spawnPos, Quaternion.identity);
+            }
+        }
+    }
 }
