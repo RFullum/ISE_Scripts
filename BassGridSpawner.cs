@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BassGridSpawner : MonoBehaviour
 {
+    // Gets GameObjects
     [SerializeField] GameObject spawnee26;
     [SerializeField] GameObject spawnee17;
     [SerializeField] GameObject spawneeTriggerCube;
@@ -28,7 +29,7 @@ public class BassGridSpawner : MonoBehaviour
     private int numGridLines26 = 17;
     private int numGridLines17 = 26;
 
-
+    // Call methods that spawn grid rails and trigger cubes
     void Start()
     {
         spawnGrid26();
@@ -36,7 +37,7 @@ public class BassGridSpawner : MonoBehaviour
         spawnGridBassTrig();
     }
 
-
+    // Spawns grid rails length of 25 notes
     private void spawnGrid26()
     {
         for (int i = 0; i < numGridLines26; i++)
@@ -46,6 +47,7 @@ public class BassGridSpawner : MonoBehaviour
         }
     }
 
+    // Spawns gril rails length of 16 sequencer positions
     private void spawnGrid17()
     {
         for (int i = 0; i < numGridLines17; i++)
@@ -55,6 +57,11 @@ public class BassGridSpawner : MonoBehaviour
         }
     }
 
+    /**
+     * Creates grid of 16 x 25 cubes to act as triggers for the bass sequencer
+     * names each cube with leading and trailing grid coordinates for referencing
+     * in other scripts.
+     */
     private void spawnGridBassTrig()
     {
         for (int i = 0; i < numGridLines17 - 1; i++)
