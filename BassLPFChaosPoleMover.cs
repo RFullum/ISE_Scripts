@@ -17,7 +17,7 @@ public class BassLPFChaosPoleMover : MonoBehaviour
         startPos = gameObject.transform.position;
     }
 
-
+    
     void Update()
     {
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -27,6 +27,7 @@ public class BassLPFChaosPoleMover : MonoBehaviour
          * activated is true
          * "x" destroys
          */
+         
         if (Physics.Raycast(ray, out var hit))
         {
             if (hit.collider.gameObject == gameObject)
@@ -46,6 +47,7 @@ public class BassLPFChaosPoleMover : MonoBehaviour
         }
 
     }
+
 
     
 }
