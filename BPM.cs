@@ -46,10 +46,15 @@ public class BPM : MonoBehaviour
         }
     }
 
-
+    /*
     void Update()
     {
         // Call beatDetection method
+        beatDetection();
+    }
+    */
+    private void FixedUpdate()
+    {
         beatDetection();
     }
 

@@ -7,6 +7,7 @@ public class PlayerFeedback : MonoBehaviour
     [SerializeField] string bButtonFeedback;
     [SerializeField] string hButtonFeedback;
     [SerializeField] string nButtonFeedback;
+    [SerializeField] string xButtonFeedback;
 
     // Update is called once per frame
     void Update()
@@ -17,5 +18,7 @@ public class PlayerFeedback : MonoBehaviour
             AkSoundEngine.PostEvent(hButtonFeedback, gameObject);
         if (Input.GetKeyDown(KeyCode.N))
             AkSoundEngine.PostEvent(nButtonFeedback, gameObject);
+        if (Input.GetKeyDown(KeyCode.X))
+            AkSoundEngine.PostEvent(xButtonFeedback, gameObject);
     }
 }
