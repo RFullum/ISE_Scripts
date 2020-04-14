@@ -23,21 +23,24 @@ public class SpawnArpPlayerBall : MonoBehaviour
         {
             if (hit.collider.gameObject.tag == pianoTag)
             {
+                // Spawns arpeggiator ball
                 if (Input.GetKeyDown(KeyCode.B))
                 {
                     spawnArpBall();
                 }
 
+                // Spawns arpeggiator note killer ball
                 if (Input.GetKeyDown(KeyCode.X))
                 {
                     spawnKillBall();
                 }
 
+                // Updates arpeggiator speed
                 if (Input.GetKeyDown(KeyCode.N))
                 {
                     arpSpeed++;
                     arpSpeed %= 3;
-                    arpSpawner.beatDivisionChoser(arpSpeed);
+                    arpSpawner.beatDivisionChooser(arpSpeed);
                 }
             }
         }

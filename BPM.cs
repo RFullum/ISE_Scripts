@@ -13,18 +13,22 @@ public class BPM : MonoBehaviour
 
     // Tracks beat divisions
     public static bool beatFull;
+    public static bool eighthBeatFull;
     public static bool sixteenthBeatFull;
 
     // Counts beat divisions
     public static int beatCountFull;
+    public static int eighthCountFull;
     public static int sixteenthCountFull;
 
     // length of beat divisions
     private float beatInterval;
+    private float eighthBeatInterval;
     private float sixteenthBeatInterval;
 
     // initializes timers
     private float beatTimer = 0.0f;
+    private float eighthBeatTimer = 0.0f;
     private float sixteenthBeatTimer = 0.0f;
 
 
@@ -81,12 +85,25 @@ public class BPM : MonoBehaviour
             beatCountFull++;            // Increments counter
         }
 
+        // Eighth beat count
+        eighthBeatFull = false;
+        eighthBeatInterval = beatInterval / 2.0f;
+        eighthBeatTimer += Time.deltaTime;
+
+        // Eighth loop
+        if (eighthBeatTimer >= eighthBeatInterval)
+        {
+            eighthBeatTimer -= eighthBeatInterval;
+            eighthBeatFull = true;
+            eighthCountFull++;
+        }
+
         // Sixteenth beat count
         sixteenthBeatFull = false;
         sixteenthBeatInterval = beatInterval / 4.0f;
         sixteenthBeatTimer += Time.deltaTime;
 
-        // Eighth loop
+        // Sixteenth loop
         if (sixteenthBeatTimer >= sixteenthBeatInterval)
         {
             sixteenthBeatTimer -= sixteenthBeatInterval;  // wrap eighthBeatTimer
