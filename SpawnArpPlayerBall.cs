@@ -6,8 +6,14 @@ public class SpawnArpPlayerBall : MonoBehaviour
 {
     private string pianoTag = "pianoTag";
     [SerializeField] GameObject spawnee;
+    [SerializeField] GameObject killBall;
 
+    private float spawnX = 80.0f;
+    private float spawnY = 3.0f;
+    private float spawnZ = 60.0f;
 
+    ArpSpawner arpSpawner = new ArpSpawner();
+    private int arpSpeed = 0;
 
     void Update()
     {
@@ -21,16 +27,29 @@ public class SpawnArpPlayerBall : MonoBehaviour
                 {
                     spawnArpBall();
                 }
+
+                if (Input.GetKeyDown(KeyCode.X))
+                {
+                    spawnKillBall();
+                }
+
+                if (Input.GetKeyDown(KeyCode.N))
+                {
+                    arpSpeed++;
+                    arpSpeed %= 3;
+                    arpSpawner.beatDivisionChoser(arpSpeed);
+                }
             }
         }
     }
 
     private void spawnArpBall()
     {
-        float spawnX = 80.0f;
-        float spawnY = 3.0f;
-        float spawnZ = 60.0f;
-
         Instantiate(spawnee, new Vector3(spawnX, spawnY, spawnZ), Quaternion.identity);
+    }
+
+    private void spawnKillBall()
+    {
+        Instantiate(killBall, new Vector3(spawnX, spawnY, spawnZ), Quaternion.identity);
     }
 }

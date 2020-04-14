@@ -8,7 +8,9 @@ public class ArpSpawner : MonoBehaviour
     private float spawnX, spawnZ;
     private float spawnY = 10.0f;
     private int sequenceLength = 0;
+    private int beatdivision = 1;
     private string ballName;
+
 
     [SerializeField] GameObject spawnee;
 
@@ -23,7 +25,10 @@ public class ArpSpawner : MonoBehaviour
         {
             if (BPM.sixteenthBeatFull)
             {
-                int beatCount = BPM.sixteenthCountFull % sequenceLength;
+                //Debug.Log( (BPM.sixteenthCountFull / beatdivision) % sequenceLength );
+                //int beatCount = (BPM.sixteenthCountFull % sequenceLength); // / beatdivision;
+                int beatCount = ((BPM.sixteenthCountFull / beatdivision) % sequenceLength);
+                //Debug.Log(beatCount);
 
                 if(beatCount == i)
                 {
@@ -47,6 +52,22 @@ public class ArpSpawner : MonoBehaviour
     public void addToArp(string nextNote)
     {
         arpList.Add(nextNote);
+    }
+
+    public void removeFromArp(string noteKill)
+    {
+        for (int i=0; i<arpList.Count; i++)
+        {
+            if (arpList[i] == noteKill)
+            {
+                arpList.RemoveAt(i);
+            }
+        }
+    }
+
+    public void beatDivisionChoser(int noteDiv)
+    {
+        beatdivision = noteDiv + 1;
     }
 
 }

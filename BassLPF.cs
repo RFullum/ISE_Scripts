@@ -18,7 +18,7 @@ public class BassLPF : MonoBehaviour
     void bassLPFParams()
     {
         var ballX = transform.position.x;
-        var ballZ = transform.position.y;
+        var ballZ = transform.position.z;
 
         float filtFreq = mapValues.remapValues(ballX, 100.0f, 111.0f, 0.0f, 100.0f);
         float filtRes = mapValues.remapValues(ballZ, -35.0f, -47.0f, 0.0f, 100.0f);

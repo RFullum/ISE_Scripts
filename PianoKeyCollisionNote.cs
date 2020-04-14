@@ -14,6 +14,9 @@ public class PianoKeyCollisionNote : MonoBehaviour
 
     ArpSpawner arpSpawner = new ArpSpawner();
 
+    private string pianoTag = "pianoTag";
+    private string pianoKill = "pianoKill";
+
     /*
      * sets original color of piano key
      */
@@ -34,7 +37,19 @@ public class PianoKeyCollisionNote : MonoBehaviour
         Destroy(collision.gameObject);
 
         string note = gameObject.name;
-        arpSpawner.addToArp(note);
+
+        if (collision.gameObject.tag == pianoKill)
+        {
+            arpSpawner.removeFromArp(note);
+        }
+
+        else if (collision.gameObject.tag == pianoTag)
+        {
+            arpSpawner.addToArp(note);
+        }
+
+        
+        
 
         StartCoroutine("pianoUp");
     }
