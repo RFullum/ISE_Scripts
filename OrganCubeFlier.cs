@@ -6,7 +6,7 @@ public class OrganCubeFlier : MonoBehaviour
 {
     private bool activated, isMoving;
     private Vector3 startPos, targetPos;
-    [SerializeField] float speed;
+    private float speed;
 
     /*
      * Initializes gravity on, activated and isMoving to false,
@@ -23,6 +23,7 @@ public class OrganCubeFlier : MonoBehaviour
 
     void Update()
     {
+        setSpeed();
         float step = speed * Time.deltaTime;
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -57,6 +58,7 @@ public class OrganCubeFlier : MonoBehaviour
 
             if (isMoving == false)
             {
+                setSpeed();
                 moveToTarget();
             }
 
@@ -77,5 +79,10 @@ public class OrganCubeFlier : MonoBehaviour
 
         targetPos = new Vector3(xTarget, yTarget, zTarget);
         isMoving = true;
+    }
+
+    private void setSpeed()
+    {
+        speed = Random.Range(5.0f, 100.0f);
     }
 }
