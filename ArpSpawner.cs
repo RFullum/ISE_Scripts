@@ -111,5 +111,9 @@ public class ArpSpawner : MonoBehaviour
         beatdivision = noteDiv;
     }
 
+    public List<string> getArpList()
+    {
+        return arpList;
+    }
 
 }

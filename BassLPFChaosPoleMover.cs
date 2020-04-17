@@ -16,7 +16,6 @@ public class BassLPFChaosPoleMover : MonoBehaviour
     void Start()
     {
         GetComponent<Rigidbody>().useGravity = false;
-        //GetComponent<Rigidbody>().isKinematic = false;
         activated = false;
         isMoving = false;
         startPos = gameObject.transform.position;
