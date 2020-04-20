@@ -42,6 +42,13 @@ public class MasterLPF : MonoBehaviour
                 {
                     bypassToggle = !bypassToggle;
                 }
+
+                // Make it stop bouncing or rolling
+                if (Input.GetKeyDown(KeyCode.X))
+                {
+                    var rb = GetComponent<Rigidbody>();
+                    rb.velocity = new Vector3(0.0f, 0.0f, 0.0f);
+                }
             }
         }
 

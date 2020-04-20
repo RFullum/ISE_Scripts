@@ -42,8 +42,18 @@ public class MasterHPF : MonoBehaviour
         // Sets bypassToggle true and false
         if (Physics.Raycast(ray, out var hit))
             if (hit.collider.gameObject == gameObject)
+            {
                 if (Input.GetKeyDown(KeyCode.B))
                     bpToggle = !bpToggle;
+
+                // Make it stop bouncing or rolling
+                if (Input.GetKeyDown(KeyCode.X))
+                {
+                    var rb = GetComponent<Rigidbody>();
+                    rb.velocity = new Vector3(0.0f, 0.0f, 0.0f);
+                }
+            }
+                
 
         // turn bypass on/off
         if (bpToggle == true)

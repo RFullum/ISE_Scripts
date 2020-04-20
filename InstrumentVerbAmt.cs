@@ -30,5 +30,17 @@ public class InstrumentVerbAmt : MonoBehaviour
         colorG = mapValues.remapValues(verbDecay, 0.0f, 100.0f, 0.0f, 1.0f);
         renderer.material.SetColor("_Color", new Color(colorR, colorG, 1.0f, 1.0f));
 
+        // Make it stop bouncing or rolling
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out var hit))
+            if (hit.collider.gameObject == gameObject)
+            {
+                if (Input.GetKeyDown(KeyCode.X))
+                {
+                    var rb = GetComponent<Rigidbody>();
+                    rb.velocity = new Vector3(0.0f, 0.0f, 0.0f);
+                }
+            }
     }
 }
