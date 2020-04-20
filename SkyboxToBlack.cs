@@ -18,6 +18,10 @@ public class SkyboxToBlack : MonoBehaviour
     // Sets to solidcolor
     private void OnTriggerEnter(Collider other)
     {
-        Camera.main.clearFlags = CameraClearFlags.SolidColor;
+        if (other.tag == "Player")
+        {
+            Camera.main.clearFlags = CameraClearFlags.SolidColor;
+        }
+        
     }
 }
