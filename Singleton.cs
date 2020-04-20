@@ -20,6 +20,7 @@ public class Singleton : MonoBehaviour
 
     // Counts object collisions
     public float beatsPerMinute;
+    public bool destroyEverything;
 
     private void Awake()
     {
