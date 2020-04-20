@@ -34,7 +34,9 @@ public class PianoKeyCollisionNote : MonoBehaviour
         var colorRenderer = GetComponent<Renderer>();
         colorRenderer.material.SetColor("_Color", highlightedColor);
         transform.Rotate(degRotation, 0.0f, 0.0f, Space.Self);
-        Destroy(collision.gameObject);
+
+        if (collision.gameObject.tag == pianoTag || collision.gameObject.tag == pianoKill)
+            Destroy(collision.gameObject);
 
         string note = gameObject.name;
 
