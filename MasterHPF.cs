@@ -2,31 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MasterLPF : MonoBehaviour
+/*
+ * Controls the HPF params on the master bus
+ */
+public class MasterHPF : MonoBehaviour
 {
-    private string bp = "Master_LPF_Bypass";
-    private float bypassOn = 0.0f;
-    private float bypassOff = 100.0f;
-    private bool bypassToggle = true;   // true = bypassed; false = active;
-
-    private float frequency, resonance;
-    private string freq = "Master_LPF_Freq";
-    private string res = "Master_LPF_Res";
     MapValues mapValues = new MapValues();
 
-    Color bpColor = new Color(1.0f, 0.0f, 0.25f, 1.0f);
-    Color activeColor = new Color(0.0f, 1.0f, 0.25f, 1.0f);
+    // RTPC names
+    private string bp = "Master_HPF_Bypass";
+    private string freq = "MasterHPFFreq";
+    private string res = "MasterHPFRes";
 
-    /*
-     * Initialize to bypass on and sets color
-     */
+    private float bypassed = 0.0f;
+    private float activeFilt = 100.0f;
+    private bool bpToggle = true; // true = bypassed; false = active;
+
+    private float frequency, resonance;
+
+    Color bpColor = new Color(1.0f, 0.0f, 0.75f, 1.0f);
+    Color activeColor = new Color(0.0f, 1.0f, 0.75f, 1.0f);
+
+
+    // initialize to bypassed and sets color
     void Start()
     {
-        AkSoundEngine.SetRTPCValue(bp, bypassOn);
+        AkSoundEngine.SetRTPCValue(bp, bypassed);
 
         var renderer = GetComponent<Renderer>();
         renderer.material.SetColor("_Color", bpColor);
     }
+
 
     void Update()
     {
@@ -35,25 +41,19 @@ public class MasterLPF : MonoBehaviour
 
         // Sets bypassToggle true and false
         if (Physics.Raycast(ray, out var hit))
-        {
             if (hit.collider.gameObject == gameObject)
-            {
                 if (Input.GetKeyDown(KeyCode.B))
-                {
-                    bypassToggle = !bypassToggle;
-                }
-            }
-        }
+                    bpToggle = !bpToggle;
 
-        // turns bypass on and off
-        if(bypassToggle == true)
+        // turn bypass on/off
+        if (bpToggle == true)
         {
-            AkSoundEngine.SetRTPCValue(bp, bypassOn);
+            AkSoundEngine.SetRTPCValue(bp, bypassed);
             renderer.material.SetColor("_Color", bpColor);
         }
-        else if (bypassToggle == false)
+        else if (bpToggle == false)
         {
-            AkSoundEngine.SetRTPCValue(bp, bypassOff);
+            AkSoundEngine.SetRTPCValue(bp, activeFilt);
             renderer.material.SetColor("_Color", activeColor);
         }
 
