@@ -10,6 +10,7 @@ public class SpawnPS1 : MonoBehaviour
     [SerializeField] GameObject particles3;
     [SerializeField] GameObject particles4;
     [SerializeField] GameObject particles5;
+    [SerializeField] GameObject particles6;
 
     // Position variables
     private float posX, posY, posZ, rotX, rotY, tester;
@@ -32,6 +33,7 @@ public class SpawnPS1 : MonoBehaviour
 
     private float elapsedTime = 0.0f;
     private float marker2 = 45.0f;
+    private float marker3 = 90.0f;
 
     void Start()
     {
@@ -74,6 +76,11 @@ public class SpawnPS1 : MonoBehaviour
                     float zRand2 = Random.Range(-200.0f, 200.0f);
 
                     Instantiate(particles2, new Vector3(posX + xRand2, posY - yRand2, posZ + zRand2), Quaternion.identity);
+
+                    if (elapsedTime > marker3)
+                    {
+                        Instantiate(particles6, new Vector3(posX - xRand2, posY - (yRand2 + xRand2), posZ - zRand2), Quaternion.identity);
+                    }
                 }
 
                 if (beatCounter % 2 == 0)
