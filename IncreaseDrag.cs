@@ -8,6 +8,7 @@ using UnityEngine;
 public class IncreaseDrag : MonoBehaviour
 {
     private float dragAmt = 100.0f;
+    private float dragMult = 1.0f;
 
     // Initializes drag to zero
     void Start()
@@ -24,7 +25,9 @@ public class IncreaseDrag : MonoBehaviour
         if (transform.position.y < -5.0f)
         {
             var rb = GetComponent<Rigidbody>();
-            rb.drag = dragAmt;
+            rb.drag = dragAmt * dragMult;
         }
+
+        dragMult += Time.deltaTime;
     }
 }

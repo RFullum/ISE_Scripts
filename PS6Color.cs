@@ -33,9 +33,9 @@ public class PS6Color : MonoBehaviour
         float lowVal = mapValues.remapValues(lowMeter, -48.0f, -6.0f, 0.5f, 4.0f);
         float hiMidVal = mapValues.remapValues(hiMidMeter, -48.0f, 0.0f, 100.0f, 200.0f);
         float hiVal = mapValues.remapValues(hiMeter, -48.0f, 0.0f, 1.0f, 10.0f);
-        float hiValColor = mapValues.remapValues(hiMeter, -48.0f, 0.0f, 0.2f, 0.8f);
+        float hiValColor = mapValues.remapValues(hiMeter, -48.0f, 0.0f, 0.4f, 0.12f);
         float lowMidVal = mapValues.remapValues(lowMidMeter, -48.0f, 0.0f, 1.0f, 50.0f);
-        float lowMidColor = mapValues.remapValues(lowMidMeter, -48.0f, 0.0f, 0.8f, 0.1f);
+        float lowMidColor = mapValues.remapValues(lowMidMeter, -48.0f, 0.0f, 0.3f, 0.76f);
 
         var main = ps.main;
         main.startColor = new Color(0.5f, hiValColor, lowMidColor, 1.0f);
