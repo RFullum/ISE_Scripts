@@ -11,6 +11,7 @@ public class PlayTrack : MonoBehaviour
         if (other.tag == "Player")
         {
             AkSoundEngine.PostEvent(wwiseEvent, gameObject);
+            Singleton.Instance.isFalling = true;
         }
     }
 }
