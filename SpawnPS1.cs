@@ -30,11 +30,11 @@ public class SpawnPS1 : MonoBehaviour
 
             float currentTime = Time.time;
             currentTime += Time.deltaTime;
-            if (currentTime > 1.0f)
+            if (currentTime > 0.46875f)
             {
-                float xRand = Random.Range(1.0f, 30.0f);
-                float yRand = Random.Range(100.0f, 500.0f);
-                float zRand = Random.Range(1.0f, 10.0f);
+                float xRand = Random.Range(-30.0f, 30.0f);
+                float yRand = Random.Range(100.0f, 1000.0f);
+                float zRand = Random.Range(-30.0f, 10.0f);
 
                 Instantiate(particles, new Vector3(posX + xRand, posY - yRand, posZ + zRand), Quaternion.identity);
             }
