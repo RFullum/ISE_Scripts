@@ -53,6 +53,7 @@ public class PS8Color : MonoBehaviour
 
         var trails = ps.trails;
         trails.colorOverLifetime = new Color(lowMidColor, lowMidColor + 0.2f, 0.1f, 0.1f);
+        trails.colorOverTrail = new Color(lowMidColor, lowMidColor + 0.2f, 0.1f, 0.1f);
 
     }
 

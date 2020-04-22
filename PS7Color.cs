@@ -29,6 +29,29 @@ public class PS7Color : MonoBehaviour
     void Update()
     {
         getMeterValues();
+
+        var main = ps.main;
+        var trails = ps.trails;
+
+        float startSizeMult = mapValues.remapValues(lowMeter, -48.0f, 0.0f, 1.0f, 10.0f);
+        main.startSizeMultiplier = startSizeMult;
+
+        float lowColor = 0.0f;
+        if (lowMeter < -12.0f)
+        {
+            lowColor = 0.0f;
+        }
+        else if (lowMeter >= -12.0f)
+        {
+            lowColor = 1.0f;
+        }
+
+        trails.colorOverLifetime = new Color(lowColor, 1.0f, 0.0f, 1.0f);
+        trails.colorOverTrail = new Color(lowColor, 0.85f, 0.0f, 1.0f);
+
+        float gravModMult = mapValues.remapValues(hiMidMeter, -48.0f, 0.0f, 0.25f, 3.0f);
+        main.gravityModifierMultiplier = gravModMult;
+
     }
 
     private void getMeterValues()

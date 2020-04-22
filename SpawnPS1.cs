@@ -11,7 +11,7 @@ public class SpawnPS1 : MonoBehaviour
     [SerializeField] GameObject particles4;
     [SerializeField] GameObject particles5;
     [SerializeField] GameObject particles6;
-    [SerializeField] GameObject partciles7;
+    [SerializeField] GameObject particles7;
     [SerializeField] GameObject particles8;
 
     // Position variables
@@ -126,6 +126,18 @@ public class SpawnPS1 : MonoBehaviour
                         float zRand8 = Random.Range(-400.0f, 400.0f);
 
                         Instantiate(particles8, new Vector3(posX + xRand8, posY - yRand8, posZ + zRand8), Quaternion.identity);
+                    }
+                }
+
+                if ( (barCounter * 4) % 3 == 0)
+                {
+                    if (elapsedTime > 300.0f)
+                    {
+                        float xRand7 = Random.Range(-1000.0f, 1000.0f);
+                        float yRand7 = Random.Range(1000.0f, 3500.0f);
+                        float zRand7 = Random.Range(-1000.0f, 1000.0f);
+
+                        Instantiate(particles7, new Vector3(posX + xRand7, posY - yRand7, posZ + zRand7), Quaternion.identity);
                     }
                 }
 
