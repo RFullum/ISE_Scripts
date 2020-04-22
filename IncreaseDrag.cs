@@ -28,6 +28,6 @@ public class IncreaseDrag : MonoBehaviour
             rb.drag = dragAmt * dragMult;
         }
 
-        dragMult += Time.deltaTime;
+        dragMult = (Time.deltaTime + dragMult) * 2.0f;
     }
 }
