@@ -11,6 +11,8 @@ public class SpawnPS1 : MonoBehaviour
     [SerializeField] GameObject particles4;
     [SerializeField] GameObject particles5;
     [SerializeField] GameObject particles6;
+    [SerializeField] GameObject partciles7;
+    [SerializeField] GameObject particles8;
 
     // Position variables
     private float posX, posY, posZ, rotX, rotY, tester;
@@ -115,38 +117,28 @@ public class SpawnPS1 : MonoBehaviour
                     Instantiate(particles4, new Vector3(posX + xRand4, posY - yRand4, posZ + zRand4), Quaternion.identity);
                 }
 
+                if ( (barCounter * 3) % 4 == 0 )
+                {
+                    if (elapsedTime > 165.0f)
+                    {
+                        float xRand8 = Random.Range(-500.0f, 500.0f);
+                        float yRand8 = Random.Range(750.0f, 2500.0f);
+                        float zRand8 = Random.Range(-400.0f, 400.0f);
+
+                        Instantiate(particles8, new Vector3(posX + xRand8, posY - yRand8, posZ + zRand8), Quaternion.identity);
+                    }
+                }
+
                 // Increment and wrap barCounter and barTime
                 barCounter++;
                 barCounter %= 4;
                 barTime -= (quarterNote * 4.0f);
             }
 
-            /*
-            elapsedTime += Time.deltaTime;
 
-            if (elapsedTime > 45.0f)
-            {
-                getMeterValues();
-                float lowVal = mapValues.remapValues(lowMeter, -48.0f, -6.0f, 1.0f, 0.0f);
-                Camera.main.backgroundColor = new Color(lowVal, lowVal, lowVal, 1.0f);
-            }
-            */
-            
-
-            
         }
         
     }
 
-    /*
-    private void getMeterValues()
-    {
-        int type = 1;
-        AkSoundEngine.GetRTPCValue("DRMLowMeter", obj, playingID, out lowMeter, ref type);
-        AkSoundEngine.GetRTPCValue("DRMLowMidMeter", obj, playingID, out lowMidMeter, ref type);
-        AkSoundEngine.GetRTPCValue("DRMHiMidMeter", obj, playingID, out hiMidMeter, ref type);
-        AkSoundEngine.GetRTPCValue("DRMHiMeter", obj, playingID, out hiMeter, ref type);
-    }
-    */
 
 }
