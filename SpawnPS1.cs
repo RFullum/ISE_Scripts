@@ -121,9 +121,9 @@ public class SpawnPS1 : MonoBehaviour
                 {
                     if (elapsedTime > 165.0f)
                     {
-                        float xRand8 = Random.Range(-500.0f, 500.0f);
+                        float xRand8 = Random.Range(-200.0f, 200.0f);
                         float yRand8 = Random.Range(750.0f, 2500.0f);
-                        float zRand8 = Random.Range(-400.0f, 400.0f);
+                        float zRand8 = Random.Range(-190.0f, 210.0f);
 
                         Instantiate(particles8, new Vector3(posX + xRand8, posY - yRand8, posZ + zRand8), Quaternion.identity);
                     }
@@ -133,9 +133,9 @@ public class SpawnPS1 : MonoBehaviour
                 {
                     if (elapsedTime > 300.0f)
                     {
-                        float xRand7 = Random.Range(-1000.0f, 1000.0f);
-                        float yRand7 = Random.Range(1000.0f, 3500.0f);
-                        float zRand7 = Random.Range(-1000.0f, 1000.0f);
+                        float xRand7 = Random.Range(-300.0f, 500.0f);
+                        float yRand7 = Random.Range(500.0f, 1500.0f);
+                        float zRand7 = Random.Range(-200.0f, 300.0f);
 
                         Instantiate(particles7, new Vector3(posX + xRand7, posY - yRand7, posZ + zRand7), Quaternion.identity);
                     }

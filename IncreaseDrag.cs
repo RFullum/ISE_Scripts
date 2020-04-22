@@ -10,11 +10,10 @@ public class IncreaseDrag : MonoBehaviour
     private float dragAmt = 100.0f;
     private float dragMult = 1.0f;
 
-    // Initializes drag to zero
+    // Initializes gravity to real gravity
     void Start()
     {
-        var rb = GetComponent<Rigidbody>();
-        rb.drag = 0;
+        Physics.gravity = new Vector3(0.0f, -9.81f, 0.0f);
     }
 
     /*
@@ -22,12 +21,10 @@ public class IncreaseDrag : MonoBehaviour
      */
     void Update()
     {
-        if (transform.position.y < -5.0f)
+        if (transform.position.y < -30000)
         {
-            var rb = GetComponent<Rigidbody>();
-            rb.drag = dragAmt * dragMult;
+            Physics.gravity = new Vector3(0.0f, -1.1f, 0.0f);
         }
 
-        dragMult = (Time.deltaTime + dragMult) * 10.0f;
     }
 }
