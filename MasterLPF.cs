@@ -73,5 +73,11 @@ public class MasterLPF : MonoBehaviour
 
         AkSoundEngine.SetRTPCValue(freq, frequency);
         AkSoundEngine.SetRTPCValue(res, resonance);
+
+        if (Singleton.Instance.destroyEverything == true)
+        {
+            AkSoundEngine.SetRTPCValue(bp, bypassOn);
+            Destroy(gameObject);
+        }
     }
 }
